@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(a.out Animal.cpp Cat.cpp Dog.cpp main.cpp)
