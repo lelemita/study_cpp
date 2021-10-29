@@ -5,7 +5,7 @@ namespace samples
 {
     class Animal
     {
-        // friend std::ostream& operator<<(std::ostream& os, Animal& a);
+        // friend ostream& operator<<(ostream& os, Cat& c);
         public:
             Animal();
             Animal(int age);
@@ -13,6 +13,7 @@ namespace samples
             int GetAge() const;
             // void Speak() const;
             virtual void Speak() const = 0;
+            int GetAge();
         private:
             int mAge;
     };

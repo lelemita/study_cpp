@@ -17,20 +17,55 @@ int main()
     delete myCat;
 
     samples::Animal* yourCat = new samples::Cat(3, "betty");
-    cout << (*dynamic_cast<samples::Cat*>(yourCat)) << endl;
     // cout << (*yourCat) << endl;
+    cout << (*dynamic_cast<samples::Cat*>(yourCat)) << endl;
     // (*yourCat).Speak();
     // yourCat->Speak();
     delete yourCat;
 
-    samples::Dog* myDog = new samples::Dog(1, "Snoopy");
-    cout << ">> heap! " << (*myDog) << " say" << myDog->Bark() << endl;
+    // 스택에 사는 개 복사 -> OK?
+    samples::Dog yourDog(2, "goopy");
+    cout << ">> stack! " << yourDog << " in " << &yourDog << endl;
+    samples::Dog twinDog(yourDog);
+    cout << "copy-> " << twinDog << " in " << &twinDog << endl;
+
+    // 힙에 사는 개 복사 -> 출력이 안되는 중
+    samples::Dog *myDog = new samples::Dog(1, "Snoopy");
+    cout << ">> heap! " << *myDog << " say" << myDog->Bark() << endl;
+    cout << "addr : " << myDog << endl;
     delete myDog;
 
-    samples::Dog yourDog(2, "goopy");
-    cout << ">> stack! " << yourDog << " say" << yourDog.Bark() << endl;
+    samples::Dog& d1 = *myDog;  // d1은 myDog의 별칭
+    // cout << "copy-> " << *d1 << endl;   // 혹시.. operator*를 오버로딩 해야함??
+    cout << "copy-> " << &d1 << endl;
+    cout << "copy-> " << *&d1 << endl;
+    cout << "copy-> " << d1 << endl;
 
-    samples::Dog twinDog(3, "foo");
-    cout << ">> copy! " << twinDog << " say" << twinDog.Bark() << endl;
+    samples::Dog d2(*myDog);
+    cout << "copy2 -> " << d2 << endl;
+
+    cout << "------------------" << endl;
+    samples::Animal* cat1 = new samples::Cat(4, "Lulu");
+    samples::Dog* dcat = static_cast<samples::Dog*>(cat1);
+    cout << dcat->Bark() << endl;
+    samples::Cat* ccat = static_cast<samples::Cat*>(cat1);
+    cout << ccat->Purr() << endl;
+
+    // // 기본형으로 테스트해보기
+    // // stack
+    // int n1 = 10;
+    // int& n2 = n1;
+    // int n3(n1);
+    // cout << n1 << " " << n2 << " " << n3 << endl;
+    // cout << &n1 << " " << &n2 << " " << &n3 << endl;
+
+    // // heap
+    // int* n4 = new int(10); // 힙에 생기는거 맞나..?
+    // int& n5 = *n4;
+    // int n6(*n4);
+    // cout << *n4 << " " << n5 << " " << n6 << endl;
+    // cout << &n4 << " " << &n5 << " " << &n6 << endl;
+    // n5 = 11;
+    // cout << *n4 << " " << n5 << " " << n6 << endl;
     return 0;
 }

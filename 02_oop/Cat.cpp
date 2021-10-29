@@ -32,8 +32,8 @@ namespace samples
 
     ostream& operator<<(ostream& os, Cat& c)
     {
-        // os << c.mName << ": " << c.mAge;
-        os << c.mName;
+        os << c.mName << "(" << c.GetAge() << ") ";
+        // os << c.mName;
         return os;
     }
 }
