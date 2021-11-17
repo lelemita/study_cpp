@@ -5,6 +5,13 @@ using namespace std;
 
 namespace samples
 {
+    // static member variable 초기화
+    const char* Cat::mAnimalType = "They are cat.";
+    const char* Cat::GetType() 
+    {
+        return Cat::mAnimalType;
+    }
+
     Cat::Cat(int age, const char* name)
         : Animal(age)
     {

@@ -13,10 +13,6 @@ namespace samples
         // std::cout << mAge << " Animal 소멸!" << std::endl;
     }
 
-    int Animal::GetAge()
-    {
-        return mAge;
-    }
 
     // void Animal::Speak() const
     // {

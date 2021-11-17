@@ -10,11 +10,16 @@ namespace samples
             Animal();
             Animal(int age);
             virtual ~Animal();
-            int GetAge() const;
             // void Speak() const;
             virtual void Speak() const = 0;
-            int GetAge();
+            inline int GetAge() const;
         private:
             int mAge;
     };
+
+    // 구현체에는 inline 키워드 안 적어도 됨
+    inline int Animal::GetAge() const
+    {
+        return mAge;
+    }
 }

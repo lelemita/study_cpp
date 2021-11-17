@@ -14,7 +14,10 @@ namespace samples
             virtual ~Cat();
             void Speak() const;
             std::string Purr() const;
+
+            static const char* GetType();
         private:
+            static const char* mAnimalType;
             char* mName;
     };
 }
