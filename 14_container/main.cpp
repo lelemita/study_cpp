@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
 int main()
@@ -18,5 +19,20 @@ int main()
     {
         cout << *iter << " ";
     }
-    cout << endl;
+    cout << endl << "==================" << endl;
+
+    map<string, int> simpleScoreMap;
+    simpleScoreMap.insert(pair<string, int>("Anne", 100));
+    simpleScoreMap.insert(pair<string, int>("Coco", 50));
+    simpleScoreMap["Anne"] = 0;
+    cout << "map size : " << simpleScoreMap.size() << endl;
+
+    map<string, int>::iterator it = simpleScoreMap.find("Coco");
+    if (it != simpleScoreMap.end())
+    {
+        it->second = 22;
+    }
+
+    cout << simpleScoreMap["Coco"] << endl;
+    return 0;
 }
