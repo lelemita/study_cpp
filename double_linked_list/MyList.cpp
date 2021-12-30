@@ -1,17 +1,21 @@
 #include <iostream>
 #include "MyList.h"
-using namespace std;
-
 namespace samples
 {
-    template<typename T>
-    MyList<T>::MyList()
+    // template<class T>
+    // MyList<T>::MyList()
+    // {
+    //     std::cout << "born" << std::endl;
+    // }
+
+    template<class T>
+    int MyList<T>::GetSize() const
     {
+        return 99;
     }
 
-    template<typename T>
-    int MyList<T>::GetSize()
+    void Test()
     {
-        return 0;
+        std::cout << "test" << std::endl;
     }
 }

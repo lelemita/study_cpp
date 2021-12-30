@@ -1,10 +1,17 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 
 project(
-    yw.nam
-    VERSION 0.1
+    run
     LANGUAGES CXX
 )
 
-# 타겟을 정의하거나
-add_executable(run main.cpp UsingDoubleLinkedListExample.cpp MyList.cpp)
+add_executable(${PROJECT_NAME} 
+    main.cpp
+    MyList.h
+    MyList.cpp
+)
+
+set_target_properties(${PROJECT_NAME}
+    PROPERTIES
+        CXX_STANDARD 14
+)
